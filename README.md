@@ -1,7 +1,6 @@
-# CV-
-Repo of My CV, papers, and  Poster in code and their respective filetypes. 
+# CV
 
-Every folder contains the .typ and .pdf version of each respective project. 
+[View my CV](CV/Viren_CV.pdf)
 
-CubeStep folder contains all Releven CubeStep Poster and Paper Material
- 
+[Download PDF](CV/Viren_CV.pdf?raw=true)
+
