@@ -1,6 +1,6 @@
 # CV
 
+[View my CV](CV/Viren_CV.pdf)
 
-<embed src="CV-/CV/Viren_CV.pdf" type="application/pdf" width="100%" height="800px" />
-[Download the PDF Document](CV-/CV/Viren_CV.pdf)
+[Download PDF](CV/Viren_CV.pdf?raw=true)
 
