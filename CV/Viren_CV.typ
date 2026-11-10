@@ -11,12 +11,13 @@
 
 
 == Objective
- Undergraduate in Computer Engineering and Applied Mathematics seeking higher level work with Markov Chains, Mathematical Modeling, and Systems Optimization in applied problems. 
+Undergraduate in Computer Engineering and Applied Mathematics seeking higher level work with Markov Chains, Mathematical Modeling, and Systems Optimization in applied problems.
 
 == Education
 #grid(
   columns: (1fr, auto),
-  [#text(weight: "bold")[California State Polytechnic University, Pomona]], [#text(weight: "bold")[August 2024 -- May 2027 expected]],
+  [#text(weight: "bold")[California State Polytechnic University, Pomona]],
+  [#text(weight: "bold")[August 2024 -- May 2027 expected]],
 )
 #v(-0.2em)
 #grid(
@@ -116,8 +117,8 @@
   date: "June 2022 -- August 2022",
   location: "San Jose, CA",
 )[
-  -  worked on creating and testing various composites impregnated with different variations of Graphene nanoplateles 
-  - Through labwork formalized and presented a method to filter for grain size with a 70% higher yeild, data was organized and calculated through matlab and excel and presented via powerpoint. 
+  - worked on creating and testing various composites impregnated with different variations of Graphene nanoplateles
+  - Through labwork formalized and presented a method to filter for grain size with a 70% higher yeild, data was organized and calculated through matlab and excel and presented via powerpoint.
 ]
 #pagebreak()
 
@@ -143,10 +144,10 @@
 #v(-.4em)
 == Presentations, Panels, and Selected Talks
 #compact_entry(
-  title: "Various Steady State Properties of Markov Chains and Processes",
+  title: "Generalizations on Markov Chain Steady State Behavior",
   date: "Nov 5 2026",
 )[
-  - Set to present at research and progress on various steady state properties of Markov Chains, at MAA Southern California-Nevada Section Fall Meeting, 2026 AMS Fall Wester Sectional Meeting, and JMM 2027.
+  - Presented research and progress on various steady state observations Markov Chains, Presented stepsize observation at MAA Southern California-Nevada Section Fall Meeting then proof for related conjectures at 2026 AMS Fall Wester Sectional Meeting, and future progress at the JMM 2027.
 ]
 #compact_entry(
   title: "MDO to Software Deign",
@@ -164,7 +165,8 @@
   title: "Quaterions: An introduction of Abstract Structures",
   date: "April 8, 2026",
 )[
-  - Presented a poster on Cayley–Dickson constructions at SIAM 2026 Symposium at Cal Poly Pomona]
+  - Presented a poster on Cayley–Dickson constructions at SIAM 2026 Symposium at Cal Poly Pomona
+]
 #compact_entry(
   title: "AI Subject Matter Expert Panelist",
   date: "June 4, 2025",
@@ -240,7 +242,7 @@
     - McNair Scholars Program
     - Engineering BRIDGE
     - SIAM Vice President and Communications Liasion
-    - CSU-SPARA
+    //- CSU-SPARA
   ],
   [
     - RAMP: Reading, Advising, and Mentoring Program
@@ -248,4 +250,3 @@
     - CPP branch IEEE Secretary
   ],
 )
-

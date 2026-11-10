@@ -1,7 +1,8 @@
-# CV
+# CV-
+Repo of My CV, papers, and  Poster in code and their respective filetypes. 
 
+Every folder contains the .typ and .pdf version of each respective project. 
 
-[![CV Preview - Full Document](CV/Viren_CV-preview.png)](CV/Viren_CV.pdf)
+CubeStep folder contains all relevent CubeStep Poster and Paper Material
 
-[Download PDF](CV/Viren_CV.pdf?raw=true)
-
+I did not want to parse my assets folder correctly so I just copy pasted it for each section.w
