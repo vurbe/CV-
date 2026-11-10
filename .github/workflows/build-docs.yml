@@ -43,11 +43,13 @@ jobs:
             # "CubeStep/PostersCode/Small_Sat_Poster.typ"
           )
 
-          for source in "${sources[@]}"; do
-            if [[ ! -f "$source" ]]; then
-              echo "Missing source: $source" >&2
+            # Guard against an empty array crashing the script under set -u
+            if [ ${#sources[@]} -eq 0 ]; then
+              echo "Error: No document sources specified in sources array." >&2
               exit 1
             fi
+
+            for source in "${sources[@]}"; do
 
             # Removing the extension leaves the complete folder and filename.
             # Example: CV/Viren_CV.typ -> CV/Viren_CV.pdf
