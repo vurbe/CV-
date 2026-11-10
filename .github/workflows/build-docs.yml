@@ -1,0 +1,88 @@
+name: Build Documents and Previews
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.typ'
+      - '**/*.tex'
+      - '**/*.bib'
+      - '.github/workflows/build-docs.yml'
+  workflow_dispatch: # Also allow a manual run from the Actions tab.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to commit generated PDFs and previews.
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Install LaTeX and PDF preview tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            latexmk texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended poppler-utils
+
+      - name: Build documents beside their sources
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Add document entry points here, using paths from the repository root.
+          # Do not list imported Typst helpers such as colors.typ or sections.typ.
+          sources=(
+            "CV/Viren_CV.typ"
+            # "CubeStep/PaperCode/SmallSatPaper.tex"
+            # "CubeStep/PostersCode/Small_Sat_Poster.typ"
+          )
+
+          for source in "${sources[@]}"; do
+            if [[ ! -f "$source" ]]; then
+              echo "Missing source: $source" >&2
+              exit 1
+            fi
+
+            # Removing the extension leaves the complete folder and filename.
+            # Example: CV/Viren_CV.typ -> CV/Viren_CV.pdf
+            base="${source%.*}"
+            pdf="${base}.pdf"
+            preview="${base}-preview.png"
+
+            echo "Building $source"
+            case "$source" in
+              *.typ)
+                typst compile "$source" "$pdf"
+                ;;
+              *.tex)
+                # -cd builds in the .tex file's own folder.
+                latexmk -cd -pdf -interaction=nonstopmode \
+                  -halt-on-error "$source"
+                latexmk -cd -c "$source" # Remove LaTeX auxiliary files.
+                ;;
+            esac
+
+            # Render PDF page 1 directly to <name>-preview.png.
+            pdftoppm -f 1 -l 1 -singlefile -png -r 150 \
+              "$pdf" "${base}-preview"
+
+            git add -- "$pdf" "$preview"
+          done
+
+      - name: Commit generated files
+        run: |
+          if git diff --cached --quiet; then
+            echo "Generated files are already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: update document PDFs and previews"
+          git push
