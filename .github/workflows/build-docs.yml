@@ -85,6 +85,7 @@ jobs:
 
             rm -rf "$page_dir"
             git add -- "$pdf" "$preview"
+            done
 
 
       - name: Commit generated files
