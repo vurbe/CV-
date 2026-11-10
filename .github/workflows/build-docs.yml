@@ -50,6 +50,10 @@ jobs:
             fi
 
             for source in "${sources[@]}"; do
+              if [[ ! -f "$source" ]]; then
+                echo "Missing source: $source" >&2
+                exit 1
+              fi
 
             # Removing the extension leaves the complete folder and filename.
             # Example: CV/Viren_CV.typ -> CV/Viren_CV.pdf
