@@ -28,7 +28,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             latexmk texlive-latex-recommended texlive-latex-extra \
-            texlive-fonts-recommended poppler-utils
+            texlive-fonts-recommended poppler-utils imagemagick
 
       - name: Build documents beside their sources
         shell: bash
@@ -68,12 +68,18 @@ jobs:
                 ;;
             esac
 
-            # Render PDF page 1 directly to <name>-preview.png.
-            pdftoppm -f 1 -l 1 -singlefile -png -r 150 \
-              "$pdf" "${base}-preview"
+            # Render every PDF page into a temporary folder.
+            page_dir="$(mktemp -d)"
+            pdftoppm -png -r 150 "$pdf" "$page_dir/page"
 
+            # Stack the pages vertically into one preview beside the source.
+            pages=("$page_dir"/page-*.png)
+            montage "${pages[@]}" -background white \
+              -tile 1x -geometry +0+0 "$preview"
+
+            rm -rf "$page_dir"
             git add -- "$pdf" "$preview"
-          done
+
 
       - name: Commit generated files
         run: |
