@@ -1,8 +1,7 @@
 # CV
 
-![CV — Page 1](CV/Viren_CV_Pg1.png)
 
-![CV — Page 2](CV/Viren_CV_Pg2.png)
+[![CV Preview - Full Document](CV/Viren_CV-preview.png)](CV/Viren_CV.pdf)
 
 [Download PDF](CV/Viren_CV.pdf?raw=true)
 
